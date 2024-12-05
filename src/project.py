@@ -32,6 +32,17 @@ snake_speed = 5
 # draw snake
 snake = pygame.Rect(snake_x, snake_y, snake_size, snake_size)
 
+# snake movement
+snake_dx = 0
+snake_dy = 0
+
+# snake control
+snake_speed_multiplier = 1
+
+# update snake position
+snake.x += snake_dx * snake_speed * snake_speed_multiplier
+snake.y += snake_dy * snake_speed * snake_speed_multiplier
+
 # quit game and clean up resources
 pygame.quit()
 sys.exit()
