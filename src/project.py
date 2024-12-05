@@ -52,6 +52,25 @@ while running:
 
     game_window.blit(game_over_text, (window_width // 2 - game_over_text.get_width() // 2, window_height // 2 - 48))
     game_window.blit(score_text, (window_width // 2 - score_text.get_width() // 2, window_height // 2))
+
+    # implement restart option
+    restart_font = pygame.font.Font(None, 24)
+    restart_text = restart_font.render("Press R to Restart", True, (255, 255, 255)) # white
+
+    game_window.blit(restart_text, (window_width // 2 - restart_text.get_width() // 2, window_height // 2 + 48))
+    pygame.display.update()
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+                # restart game
+                running = True
+                snake_body.clear()
+                snake.x - window_width // 2
+                snake.y - window_height // 2
+                score = 0
+        break
+
     pygame.display.update()
 
 # define snake properties
@@ -90,8 +109,6 @@ food_y = random.randint(0, window_height - food_size)
 
 # draw food
 food = pygame.Rect(food_x, food_y, food_size, food_size)
-
-
 
 # quit game and clean up resources
 pygame.quit()
