@@ -87,6 +87,20 @@ while running:
     score_text = score_font.render("Score: " + str(score), True, (255, 255, 255)) # white
     game_window.blit(score_text, (10, 10)) # text position
 
+    # tracking and displaying high score
+    high_score = 0
+
+    # load high score from file
+    try:
+        with open("high_score.txt", "r") as file:
+            high_score = int(file.read())
+    except FileNotFoundError:
+        pass
+
+    # display high score
+    high_score_text = score_font.render("High Score: " + str(high_score), True, (255, 255, 255)) # white
+    game_window.blit(high_score_text, (10, 40)) # text position
+
     # RENDER GRAPHICS
 
     # display game over message and final score
