@@ -43,6 +43,15 @@ while running:
 
     # render graphics
 
+    # display game over message and final score
+    game_over_font = pygame.font.Font(None, 48) # font type, font size
+    game_over_text = game_over_font.render("Game Over", True, (255, 255, 255)) # white
+
+    score_font = pygame.font.Font(None, 36)
+    score_text = score_font.render("Finale Score: " + str(score), True, (255, 255, 255)) # white
+
+    game_window.blit(game_over_text, (window_width // 2 - game_over_text.get_width() // 2, window_height // 2 - 48))
+    game_window.blit(score_text, (window_width // 2 - score_text.get_width() // 2, window_height // 2))
     pygame.display.update()
 
 # define snake properties
@@ -81,6 +90,8 @@ food_y = random.randint(0, window_height - food_size)
 
 # draw food
 food = pygame.Rect(food_x, food_y, food_size, food_size)
+
+
 
 # quit game and clean up resources
 pygame.quit()
