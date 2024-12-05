@@ -7,7 +7,7 @@ from pygame.math import Vector2
 class SNAKE:
     def __init__(self):
         self.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
-        self.direction = Vector2(1,0)
+        self.direction = Vector2(0,0)
         self.new_block = False
 
     def draw_snake(self):
@@ -15,7 +15,7 @@ class SNAKE:
             x_pos = int(block.x * cell_size)
             y_pos = int(block.y * cell_size)
             block_rect = pygame.Rect(x_pos,y_pos,cell_size,cell_size)
-            pygame.draw.rect(screen,(183,111,122),block_rect)
+            pygame.draw.rect(screen,(77,136,215),block_rect)
     
     def move_snake(self):
         if self.new_block == True:
@@ -31,6 +31,10 @@ class SNAKE:
     def add_block(self):
         self.new_block = True
 
+    def reset(self):
+        self.body = [Vector2(5,10),Vector2(4,10),Vector2(3,10)]
+        self.direction = Vector2(0,0)
+
 # create fruit function
 class FRUIT:
     def __init__(self):
@@ -38,7 +42,7 @@ class FRUIT:
 
     def draw_fruit(self):
         fruit_rect = pygame.Rect(int(self.pos.x * cell_size), int(self.pos.y * cell_size),cell_size,cell_size)
-        pygame.draw.rect(screen,(126,166,114),fruit_rect) # red
+        pygame.draw.rect(screen,(183,111,122),fruit_rect) # red
 
     def randomize(self):
         self.x = random.randint(0,cell_number - 1)
@@ -68,6 +72,10 @@ class MAIN:
             self.fruit.randomize()
             # add another block to the snake
             self.snake.add_block()
+
+        for block in self.snake.body[1:]:
+            if block == self.fruit.pos:
+                self.fruit.randomize()
     
     def check_fail(self):
         # check if snake is outside boundaries
@@ -80,8 +88,7 @@ class MAIN:
                 self.game_over()
 
     def game_over(self):
-        pygame.quit()
-        sys.exit()
+        self.snake.reset()
 
     def draw_grass(self):
         grass_color = (167,209,61)
