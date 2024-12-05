@@ -43,6 +43,11 @@ snake_speed_multiplier = 1
 snake.x += snake_dx * snake_speed * snake_speed_multiplier
 snake.y += snake_dy * snake_speed * snake_speed_multiplier
 
+# check if snake hits window boundaries
+if snake.x < 0 or snake.x + snake_size > window_width or snake.y < 0 or snake.y + snake_size > window_height:
+    # game over logic
+    running = False
+
 # quit game and clean up resources
 pygame.quit()
 sys.exit()
