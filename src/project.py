@@ -10,6 +10,9 @@ window_height = 600
 game_window = pygame.display.set_mode((window_width, window_height))
 pygame.display.set_caption("Python Snake Game")
 
+# define snake_body list
+snake_body = []
+
 # create game loop
 running = True
 while running:
@@ -18,6 +21,21 @@ while running:
             running = False
     
     # update game status
+
+    # detect collisions between snake and food
+    if snake.colliderect(food):
+        # update snake length and score
+        snake_size += 1
+        score += 1
+
+        # place food at new random position
+        food.x = random.randint(0, window_width - food_size)
+        food.y = random.randint(0, window_height - food_size)
+
+    # update snake length
+    snake_body.append(pygame.Rect(snake.x, snake.y, snake_size, snake_size))
+    if len(snake_body) > snake_size:
+        del snake_body[0]
 
     # render graphics
 
@@ -59,16 +77,6 @@ food_y = random.randint(0, window_height - food_size)
 
 # draw food
 food = pygame.Rect(food_x, food_y, food_size, food_size)
-
-# detect collisions between snake and food
-if snake.colliderect(food):
-    # update snake length and score
-    snake_size += 1
-    score += 1
-
-    # place food at new random position
-    food.x = random.randint(0, window_width - food_size)
-    food.y = random.randint(0, window_height - food_size)
 
 # quit game and clean up resources
 pygame.quit()
