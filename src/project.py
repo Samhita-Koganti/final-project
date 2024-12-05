@@ -82,6 +82,11 @@ while running:
     if len(snake_body) > 1 and snake.colliderect(snake_body[i] for i in range(1, len(snake_body))):
         running = False
 
+    # display score
+    score_font = pygame.font.Font(None, 24)
+    score_text = score_font.render("Score: " + str(score), True, (255, 255, 255)) # white
+    game_window.blit(score_text, (10, 10)) # text position
+
     # RENDER GRAPHICS
 
     # display game over message and final score
