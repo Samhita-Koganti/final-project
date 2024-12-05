@@ -10,7 +10,7 @@ GitHub Repo: <https://github.com/Samhita-Koganti/final-project.git>
 
 This is the classic snake game!  It is a short video game that relies on the player pressing the UP, DOWN, LEFT, and RIGHT movement keys to move the snake.  If the snake eats the fruit, a point is added to the player's score and the snake increases in length.  This increases the difficulty of the game, as the game ends if the snake runs into itself or the boundaries.  The goal is to get the highest score possible by keeping the snake from having a collision for as long as possible.
 
-The game does not start until the player presses a key to move.  After the snake has a collision, the game restarts and the score resets.
+When the snake eats a fruit, a new fruit is generated at a random location on the screen.  However, a fruit cannot appear on top of the snake's body.  The game does not start until the player presses a key to move.  After the snake has a collision, the game restarts and the score resets.
 
 For the best visual appeal, this game follows a set color scheme.  For maximum contrast, the main objects on the screen, the snake, the fruit, and the background, are blue, red and green respectively.  Furthermore, the background is a checkered pattern to better track the snake on the screen.  The score display is small and in the corner so as not to distract from the game.
 
