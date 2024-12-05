@@ -1,7 +1,7 @@
 # SNAKE GAME
 
 ## Demo
-Demo Video: <URL>
+Demo Video: <https://youtu.be/PXhAW7EuTaE>
 
 ## GitHub Repository
 GitHub Repo: <https://github.com/Samhita-Koganti/final-project.git>
