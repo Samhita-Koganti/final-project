@@ -36,6 +36,10 @@ while running:
     snake_body.append(pygame.Rect(snake.x, snake.y, snake_size, snake_size))
     if len(snake_body) > snake_size:
         del snake_body[0]
+    
+    # detect collisions between snake head and body
+    if len(snake_body) > 1 and snake.colliderect(snake_body[i] for i in range(1, len(snake_body))):
+        running = False
 
     # render graphics
 
