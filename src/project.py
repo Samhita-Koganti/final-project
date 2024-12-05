@@ -60,6 +60,16 @@ food_y = random.randint(0, window_height - food_size)
 # draw food
 food = pygame.Rect(food_x, food_y, food_size, food_size)
 
+# detect collisions between snake and food
+if snake.colliderect(food):
+    # update snake length and score
+    snake_size += 1
+    score += 1
+
+    # place food at new random position
+    food.x = random.randint(0, window_width - food_size)
+    food.y = random.randint(0, window_height - food_size)
+
 # quit game and clean up resources
 pygame.quit()
 sys.exit()
