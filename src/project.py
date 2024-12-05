@@ -22,6 +22,16 @@ while running:
 
     pygame.display.update()
 
+# define snake properties
+snake_color = (0, 255, 0) # green
+snake_size = 20
+snake_x = window_width // 2
+snake_y = window_height // 2
+snake_speed = 5
+
+# draw snake
+snake = pygame.Rect(snake_x, snake_y, snake_size, snake_size)
+
 # quit game and clean up resources
 pygame.quit()
 sys.exit()
