@@ -32,6 +32,19 @@ class FRUIT:
         fruit_rect = pygame.Rect(int(self.pos.x * cell_size), int(self.pos.y * cell_size),cell_size,cell_size)
         pygame.draw.rect(screen,(126,166,114),fruit_rect) # red
 
+#create main function
+class MAIN:
+    def __init__(self):
+        self.snake = SNAKE()
+        self.fruit = FRUIT()
+
+    def update(self):
+        self.snake.move_snake()
+    
+    def draw_elements(self):
+        self.fruit.draw_fruit()
+        self.snake.draw_snake()
+
 # create game window
 pygame.init()
 cell_size = 40
@@ -39,13 +52,12 @@ cell_number = 20
 screen = pygame.display.set_mode((cell_number * cell_size,cell_number * cell_size))
 clock = pygame.time.Clock()
 
-# define variables
-fruit = FRUIT()
-snake = SNAKE()
-
 # refresh screen
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE,150)
+
+# call main function
+main_game = MAIN()
 
 # create game loop
 while True:
@@ -55,19 +67,18 @@ while True:
             sys.exit()
         # snake movement
         if event.type == SCREEN_UPDATE:
-            snake.move_snake()
+            main_game.update()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                snake.direction = Vector2(0,-1)
+                main_game.snake.direction = Vector2(0,-1)
             if event.key == pygame.K_RIGHT:
-                snake.direction = Vector2(1,0)
+                main_game.snake.direction = Vector2(1,0)
             if event.key == pygame.K_DOWN:
-                    snake.direction = Vector2(0,1)
+                main_game.snake.direction = Vector2(0,1)
             if event.key == pygame.K_LEFT:
-                snake.direction = Vector2(-1,0)
+                main_game.snake.direction = Vector2(-1,0)
     
     screen.fill((175,215,70)) # green
-    fruit.draw_fruit()
-    snake.draw_snake()
+    main_game.draw_elements()
     pygame.display.update()
     clock.tick(60)
