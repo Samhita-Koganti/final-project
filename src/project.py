@@ -119,6 +119,7 @@ cell_number = 20
 screen = pygame.display.set_mode((cell_number * cell_size,cell_number * cell_size))
 clock = pygame.time.Clock()
 game_font = pygame.font.Font(None, 25)
+pygame.display.set_caption("Python Snake Game")
 
 # refresh screen
 SCREEN_UPDATE = pygame.USEREVENT
