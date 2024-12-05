@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 
 pygame.init()
 
@@ -47,6 +48,17 @@ snake.y += snake_dy * snake_speed * snake_speed_multiplier
 if snake.x < 0 or snake.x + snake_size > window_width or snake.y < 0 or snake.y + snake_size > window_height:
     # game over logic
     running = False
+
+# define food properties
+food_color = (255, 0, 0) # red
+food_size = 20
+
+# place food at random position
+food_x = random.randint(0, window_width - food_size)
+food_y = random.randint(0, window_height - food_size)
+
+# draw food
+food = pygame.Rect(food_x, food_y, food_size, food_size)
 
 # quit game and clean up resources
 pygame.quit()
