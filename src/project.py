@@ -24,13 +24,16 @@ class SNAKE:
 # create fruit function
 class FRUIT:
     def __init__(self):
-        self.x = random.randint(0,cell_number - 1)
-        self.y = random.randint(0,cell_number - 1)
-        self.pos = Vector2(self.x,self.y)
+        self.randomize()
 
     def draw_fruit(self):
         fruit_rect = pygame.Rect(int(self.pos.x * cell_size), int(self.pos.y * cell_size),cell_size,cell_size)
         pygame.draw.rect(screen,(126,166,114),fruit_rect) # red
+
+    def randomize(self):
+        self.x = random.randint(0,cell_number - 1)
+        self.y = random.randint(0,cell_number - 1)
+        self.pos = Vector2(self.x,self.y)
 
 #create main function
 class MAIN:
@@ -40,10 +43,17 @@ class MAIN:
 
     def update(self):
         self.snake.move_snake()
+        self.check_collision()
     
     def draw_elements(self):
         self.fruit.draw_fruit()
         self.snake.draw_snake()
+
+    def check_collision(self):
+        if self.fruit.pos == self.snake.body[0]:
+            # reposition the fruit
+            self.fruit.randomize()
+            # add another block to the snake
 
 # create game window
 pygame.init()
